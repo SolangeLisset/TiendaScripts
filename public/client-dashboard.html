@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScriptVerse RP - Panel de Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="user-profile">
+                <img id="userAvatar" src="/default-avatar.jpg" alt="Avatar" onclick="changeAvatar()">
+                <h3 id="username">Usuario</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" data-section="profile">Perfil</a></li>
+                    <li><a href="#" data-section="purchases">Mis Scripts</a></li>
+                    <li><a href="#" data-section="settings">Configuración</a></li>
+                    <li><a href="#" data-section="support">Soporte</a></li>
+                    <li><a href="#" id="logoutBtn">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="main-content">
+            <!-- Perfil -->
+            <section id="profile-section" class="content-section">
+                <h2>Mi Perfil</h2>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="usernameInput">Nombre de usuario</label>
+                        <input type="text" id="usernameInput" name="username" value="Usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Correo electrónico</label>
+                        <input type="email" id="emailInput" name="email" value="usuario@dominio.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bioInput">Biografía</label>
+                        <textarea id="bioInput" name="bio" placeholder="Cuéntanos algo sobre ti..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Guardar Cambios</button>
+                </form>
+            </section>
+            
+            
+            <section id="purchases-section" class="content-section hidden">
+                <h2>Mis Scripts Comprados</h2>
+                <div id="purchasedScripts">
+                    <ul>
+                        <!-- Los scripts se agregarán aquí dinámicamente -->
+                    </ul>
+                </div>
+                <button id="deleteAllBtn" class="btn">Eliminar Todos los Scripts</button>
+            </section>
+            
+            
+            <!-- Configuración de Cuenta -->
+            <section id="settings-section" class="content-section hidden">
+                <h2>Configuración de la Cuenta</h2>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="currentPassword">Contraseña actual</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Nueva contraseña</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar nueva contraseña</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Cambiar Contraseña</button>
+                </form>
+            </section>
+
+            <!-- Soporte -->
+            <section id="support-section" class="content-section hidden">
+                <h2>Soporte</h2>
+                <p>Consulta el estado de tus tickets o abre uno nuevo si necesitas ayuda con algún script.</p>
+                <div id="supportTickets">
+                    <ul>
+                        <li>
+                            <p><strong>Ticket #001:</strong> Problema con la instalación del Script A</p>
+                            <p>Estado: Cerrado</p>
+                        </li>
+                        <li>
+                            <p><strong>Ticket #002:</strong> Error al ejecutar el Script B</p>
+                            <p>Estado: Abierto</p>
+                            <button class="btn">Ver detalles</button>
+                        </li>
+                    </ul>
+                </div>
+                <form id="newTicketForm">
+                    <div class="form-group">
+                        <label for="ticketTitle">Título del Ticket</label>
+                        <input type="text" id="ticketTitle" name="ticketTitle" placeholder="Descripción del problema" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketDescription">Descripción</label>
+                        <textarea id="ticketDescription" name="ticketDescription" placeholder="Describe tu problema" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Abrir Ticket</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
