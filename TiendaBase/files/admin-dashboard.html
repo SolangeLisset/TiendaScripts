@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/admin-dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="user-profile">
+                <img id="adminAvatar" src="/default-avatar.jpg" alt="Avatar">
+                <h3 id="adminName">Administrador</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" data-section="scripts">Scripts</a></li>
+                    <li><a href="#" data-section="users">Usuarios</a></li>
+                    <li><a href="#" data-section="stats">Estadísticas</a></li>
+                    <li><a href="#" id="logoutBtn">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <!-- Sección Scripts -->
+            <section id="scripts-section" class="content-section">
+                <h2>Scripts Comprados</h2>
+                <div id="adminScriptList">
+                    <!-- Lista de Scripts se cargará aquí -->
+                </div>
+            </section>
+
+            <!-- Sección Usuarios -->
+            <section id="users-section" class="content-section hidden">
+                <h2>Usuarios Registrados</h2>
+                <div id="adminUserList">
+                    <!-- Lista de Usuarios se cargará aquí -->
+                </div>
+            </section>
+
+            <!-- Sección Estadísticas -->
+            <section id="stats-section" class="content-section hidden">
+                <h2>Estadísticas</h2>
+                <div id="adminStats">
+                    <!-- Estadísticas del sistema -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="./js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScriptVerse RP - Scripts Premium para GTA 5 Roleplay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="/api/placeholder/40/40" alt="ScriptVerse Logo">
+                <h1>ScriptVerse<span style="color: #fff;">RP</span></h1>
+            </a>
+
+            <nav>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Scripts</a></li>
+                    <li><a href="#" class="nav-link">Nosotros</a></li>
+                    <li><a href="#" class="nav-link">Soporte</a></li>
+                    <li><a href="#" class="nav-link">Contacto</a></li>
+                    <div class="auth-menu-buttons" style="display: none;">
+                        <button class="btn btn-outline" id="loginBtnMobile">Iniciar Sesión</button>
+                        <button class="btn btn-primary" id="registerBtnMobile">Registrarse</button>
+                    </div>
+                </ul>
+            </nav>
+
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Iniciar Sesión</button>
+                <button class="btn btn-primary" id="registerBtn">Registrarse</button>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Eleva tu Experiencia de Roleplay en GTA 5</h2>
+            <p>Descubre los mejores scripts premium para crear un servidor de roleplay único y profesional. Recursos de
+                alta calidad desarrollados por expertos para transformar tu servidor.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-large">Ver Scripts</button>
+                <button class="btn btn-outline btn-large">Cómo Funciona</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por qué elegir ScriptVerse RP?</h2>
+                <p>Ofrecemos la mejor experiencia en scripts para GTA 5 Roleplay con características únicas diseñadas
+                    para hacer destacar tu servidor.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Código Optimizado</h3>
+                    <p>Scripts desarrollados con las mejores prácticas para garantizar un rendimiento óptimo y la menor
+                        carga en tu servidor.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Soporte 24/7</h3>
+                    <p>Nuestro equipo de expertos está disponible las 24 horas para resolver cualquier duda o problema
+                        con tus scripts.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Actualizaciones Gratuitas</h3>
+                    <p>Recibe todas las actualizaciones y mejoras de tus scripts sin costos adicionales mientras
+                        mantienes tu licencia activa.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sistemas Anti-Hack</h3>
+                    <p>Protección avanzada contra cheats y exploits para mantener la integridad de tu servidor de
+                        roleplay.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Fácil Integración</h3>
+                    <p>Instalación sencilla y documentación completa para integrar los scripts con los sistemas
+                        existentes en tu servidor.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunidad Activa</h3>
+                    <p>Únete a nuestra comunidad de desarrolladores y administradores para compartir ideas y recibir
+                        ayuda mutua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Products Section -->
+<section class="products">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nuestros Scripts Premium</h2>
+            <p>Explora nuestra selección de scripts de alta calidad diseñados para mejorar la experiencia de roleplay en tu servidor de GTA 5.</p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="ruta-a-tu-imagen.jpg" alt="Sistema Policial Avanzado" class="product-img">
+                <div class="product-content">
+                    <h3 class="product-title">Sistema Policial Avanzado</h3>
+                    <p class="product-description">Sistema completo para roleplay policial con MDT, gestión de evidencias, sistema de arrestos y mucho más.</p>
+                    <div class="product-price">
+                        <span class="price-amount">€49.99</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(128)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/product-detail?id=123" class="ver-mas" data-id="123">Ver más detalle</a>
+                        <button class="btn btn-primary add-to-cart" data-id="1" data-name="Sistema Policial Avanzado" data-price="49.99">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="ruta-a-tu-imagen2.jpg" alt="Script de Comercio Ilegal" class="product-img">
+                <div class="product-content">
+                    <h3 class="product-title">Script de Comercio Ilegal</h3>
+                    <p class="product-description">Añade un sistema dinámico de tráfico de mercancías con NPCs y misiones.</p>
+                    <div class="product-price">
+                        <span class="price-amount">€39.99</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(98)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/product-detail?id=123" class="ver-mas" data-id="123">Ver más detalle</a>
+
+                        <button class="btn btn-primary add-to-cart" data-id="2" data-name="Script de Comercio Ilegal" data-price="39.99">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="ruta-a-tu-imagen2.jpg" alt="Script de Comercio Ilegal" class="product-img">
+                <div class="product-content">
+                    <h3 class="product-title">Script de Comercio Ilegal</h3>
+                    <p class="product-description">Añade un sistema dinámico de tráfico de mercancías con NPCs y misiones.</p>
+                    <div class="product-price">
+                        <span class="price-amount">€39.99</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(98)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/product-detail?id=123" class="ver-mas" data-id="123">Ver más detalle</a>
+
+                        <button class="btn btn-primary add-to-cart" data-id="2" data-name="Script de Comercio Ilegal" data-price="39.99">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="ruta-a-tu-imagen2.jpg" alt="Script de Comercio Ilegal" class="product-img">
+                <div class="product-content">
+                    <h3 class="product-title">Script de Comercio Ilegal</h3>
+                    <p class="product-description">Añade un sistema dinámico de tráfico de mercancías con NPCs y misiones.</p>
+                    <div class="product-price">
+                        <span class="price-amount">€39.99</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(98)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/product-detail?id=123" class="ver-mas" data-id="123">Ver más detalle</a>
+
+
+                        <button class="btn btn-primary add-to-cart" data-id="2" data-name="Script de Comercio Ilegal" data-price="39.99">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="ruta-a-tu-imagen2.jpg" alt="Script de Comercio Ilegal" class="product-img">
+                <div class="product-content">
+                    <h3 class="product-title">Script de Comercio Ilegal</h3>
+                    <p class="product-description">Añade un sistema dinámico de tráfico de mercancías con NPCs y misiones.</p>
+                    <div class="product-price">
+                        <span class="price-amount">€39.99</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(98)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="/product-detail?id=123" class="ver-mas" data-id="123">Ver más detalle</a>
+                        <button class="btn btn-primary add-to-cart" data-id="2" data-name="Script de Comercio Ilegal" data-price="39.99">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="ruta-a-tu-imagen2.jpg" alt="Script de Comercio Ilegal" class="product-img">
+                <div class="product-content">
+                    <h3 class="product-title">Script de Comercio Ilegal</h3>
+                    <p class="product-description">Añade un sistema dinámico de tráfico de mercancías con NPCs y misiones.</p>
+                    <div class="product-price">
+                        <span class="price-amount">€39.99</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(98)</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <a href="product-detail.html?id=123" class="ver-mas" data-id="123">Ver más detalle</a>
+
+                        <button class="btn btn-primary add-to-cart" data-id="2" data-name="Script de Comercio Ilegal" data-price="39.99">
+                            <i class="fas fa-cart-plus"></i> Añadir al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <p>Más de 500 servidores de roleplay confían en nuestros scripts para ofrecer la mejor experiencia a sus jugadores.</p>
+        </div>
+
+        <div class="testimonials-slider">
+            <div class="testimonial">
+                <p class="testimonial-text">"El sistema policial de ScriptVerse RP transformó completamente nuestro servidor. La profundidad del roleplay que permite es increíble y nuestros jugadores lo aman."</p>
+                <div class="testimonial-author">
+                    <img src="/api/placeholder/60/60" alt="Alex Johnson" class="testimonial-avatar">
+                    <h4 class="testimonial-name">Alex Johnson</h4>
+                    <span class="testimonial-role">Dueño de Los Santos Roleplay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Listo para llevar tu servidor al siguiente nivel?</h2>
+            <p>Únete a cientos de servidores que ya están disfrutando de nuestros scripts premium para GTA 5 Roleplay.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-large">Ver Todos los Scripts</button>
+                <button class="btn btn-outline btn-large">Contactar Soporte</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>ScriptVerse RP</h3>
+                <p style="color: #e1e1e1; margin-bottom: 1rem;">Los mejores scripts premium para servidores de GTA 5 Roleplay.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Inicio</a></li>
+                    <li class="footer-link"><a href="#">Scripts</a></li>
+                    <li class="footer-link"><a href="#">Documentación</a></li>
+                    <li class="footer-link"><a href="#">Blog</a></li>
+                    <li class="footer-link"><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Soporte</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Centro de Soporte</a></li>
+                    <li class="footer-link"><a href="#">Estado del Servicio</a></li>
+                    <li class="footer-link"><a href="#">Política de Reembolsos</a></li>
+                    <li class="footer-link"><a href="#">Reportar un Problema</a></li>
+                    <li class="footer-link"><a href="#">Contactar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>soporte@scriptverserp.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe contact-icon"></i>
+                    <span>www.scriptverserp.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock contact-icon"></i>
+                    <span>Soporte 24/7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2023 ScriptVerse RP. Todos los derechos reservados. | <a href="#" style="color: var(--accent-color);">Términos de Servicio</a> | <a href="#" style="color: var(--accent-color);">Política de Privacidad</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeLoginModal">&times;</span>
+        <h2 class="modal-title">Iniciar Sesión</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail" class="form-label">Correo Electrónico</label>
+                <input type="email" id="loginEmail" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword" class="form-label">Contraseña</label>
+                <input type="password" id="loginPassword" class="form-input" required>
+            </div>
+            <button type="submit" class="form-button">Iniciar Sesión</button>
+            <div class="form-footer">
+                ¿No tienes una cuenta? <a href="#" id="showRegisterModal">Regístrate</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal" id="registerModal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeRegisterModal">&times;</span>
+        <h2 class="modal-title">Registrarse</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerUsername" class="form-label">Nombre de Usuario</label>
+                <input type="text" id="registerUsername" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                <input type="email" id="registerEmail" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword" class="form-label">Contraseña</label>
+                <input type="password" id="registerPassword" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label for="registerConfirmPassword" class="form-label">Confirmar Contraseña</label>
+                <input type="password" id="registerConfirmPassword" class="form-input" required>
+            </div>
+            <button type="submit" class="form-button">Crear Cuenta</button>
+            <div class="form-footer">
+                ¿Ya tienes una cuenta? <a href="#" id="showLoginModal">Inicia Sesión</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Cart Sidebar -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-header">
+        <h3 class="cart-title">Tu Carrito</h3>
+        <span class="close-cart" id="closeCart">&times;</span>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <!-- Cart items will be added here dynamically -->
+        <div class="empty-cart-message" style="text-align: center; padding: 2rem; color: #e1e1e1;">
+            <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+            <p>Tu carrito está vacío</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span class="total-label">Total:</span>
+            <span class="total-amount" id="cartTotal">€0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceder al Pago</button>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<script src="./js/index.js"></script>
+<script src="./js/product-detail.js"></script>
+
+
+</script>
+</body>
+</html>
+
