@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Pago Exitoso! - TuScriptPro</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --success: #10b981;
+            --dark: #1f2937;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .success-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .badge-success {
+            background-color: var(--success);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .btn-download {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+        .btn-download:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .product-details {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .product-image {
+            width: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .order-summary {
+            margin-top: 2rem;
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="badge-success">¡Pago Completado!</div>
+        <h1>Gracias por tu compra</h1>
+        <p id="confirmation-message">Hemos recibido tu pago correctamente. Tu producto está listo para descargar.</p>
+        
+        <div class="product-details">
+            <img src="/images/script-cover.png" alt="Script Premium" class="product-image">
+            <div>
+                <h2>Script Premium</h2>
+                <p>Versión completa con licencia de 1 año</p>
+                <p><strong>ID de transacción:</strong> <span id="transaction-id"></span></p>
+                <a href="#" id="download-btn" class="btn-download">Descargar Ahora</a>
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <h3>Resumen de tu orden</h3>
+            <div id="order-details">
+                <!-- Datos dinámicos desde JavaScript -->
+            </div>
+        </div>
+
+        <div id="license-section" class="hidden">
+            <h3>Tu Licencia</h3>
+            <p><strong>Clave de activación:</strong> <span id="license-key"></span></p>
+            <p>Guarda esta clave en un lugar seguro.</p>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <p>¿Necesitas ayuda? <a href="/support">Contáctanos</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener parámetros de la URL (ej: ?transaction_id=tx_123&product_id=456)
+        const urlParams = new URLSearchParams(window.location.search);
+        const transactionId = urlParams.get('transaction_id');
+        
+        // Mostrar datos de la transacción
+        document.getElementById('transaction-id').textContent = transactionId || 'N/A';
+
+        // Simular generación de licencia (en producción, esto vendría de tu backend)
+        function generateLicenseKey() {
+            return 'SCR-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+        }
+
+        // Mostrar detalles dinámicos
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // 1. Obtener detalles completos del pago desde tu backend
+                const response = await fetch(`/api/payment-details?transaction_id=${transactionId}`);
+                const data = await response.json();
+                
+                // 2. Actualizar la UI con los datos reales
+                if (data.success) {
+                    document.getElementById('order-details').innerHTML = `
+                        <p><strong>Producto:</strong> ${data.product_name}</p>
+                        <p><strong>Monto:</strong> ${data.currency} ${data.amount}</p>
+                        <p><strong>Fecha:</strong> ${new Date(data.date).toLocaleString()}</p>
+                        <p><strong>Método de pago:</strong> ${data.payment_method}</p>
+                    `;
+                    
+                    // 3. Mostrar licencia y habilitar descarga
+                    document.getElementById('license-key').textContent = data.license_key || generateLicenseKey();
+                    document.getElementById('license-section').classList.remove('hidden');
+                    
+                    // 4. Configurar el botón de descarga
+                    document.getElementById('download-btn').href = data.download_url || '#';
+                }
+            } catch (error) {
+                console.error('Error al cargar detalles:', error);
+            }
+        });
+
+        // Opcional: Trackear evento de descarga
+        document.getElementById('download-btn').addEventListener('click', () => {
+            // Puedes registrar la descarga en tu analytics
+            console.log('Descarga iniciada para:', transactionId);
+        });
+    </script>
+</body>
+</html>

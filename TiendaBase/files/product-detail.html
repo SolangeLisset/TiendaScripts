@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Estilos específicos para la página de detalle */
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-button {
+            background-color: #666;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #555;
+        }
+        
+        .product-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .product-image-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .product-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .product-description {
+            line-height: 1.6;
+            color: #555;
+            margin: 20px 0;
+        }
+        
+        .product-meta {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 20px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+        }
+        
+        .meta-label {
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e63946;
+            margin: 20px 0;
+        }
+        
+        .stock-available {
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+        
+        .stock-low {
+            color: #e9c46a;
+            font-weight: bold;
+        }
+        
+        .stock-unavailable {
+            color: #e76f51;
+            font-weight: bold;
+        }
+        
+        .buy-button {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .buy-button:hover {
+            background-color: #218380;
+        }
+        
+        .buy-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-container {
+            padding: 30px;
+            text-align: center;
+            color: #e63946;
+        }
+        
+        .updated-field {
+            animation: highlight 2s;
+        }
+        
+        @keyframes highlight {
+            0% { background-color: rgba(42, 157, 143, 0.2); }
+            100% { background-color: transparent; }
+        }
+        
+        @media (max-width: 768px) {
+            .product-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="/">Underworld</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/scripts.html">Scripts</a></li>
+                <li><a href="/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Contenedor para el detalle del producto -->
+        <div class="product-detail-container">
+            <!-- Loader que se muestra mientras se carga la información -->
+            <div id="loading-container" class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Cargando detalles del producto...</p>
+            </div>
+            
+            <!-- Contenedor de error que se muestra si hay un problema -->
+            <div id="error-container" class="error-container" style="display: none;">
+                <h2>¡Ups! Algo salió mal</h2>
+                <p id="error-message">No se pudo cargar la información del producto.</p>
+                <button class="back-button" onclick="window.close()">Cerrar ventana</button>
+            </div>
+            
+            <!-- Contenedor del producto que se muestra cuando la información está cargada -->
+            <div id="product-container" style="display: none;">
+                <!-- Encabezado con título y botón de volver -->
+                <div class="product-header">
+                    <h1 id="product-title" class="product-title">Título del Producto</h1>
+                    <button class="back-button" onclick="window.close()">Cerrar</button>
+                </div>
+                
+                <!-- Contenido principal del producto -->
+                <div class="product-content">
+                    <!-- Imagen del producto -->
+                    <div class="product-image-container">
+                        <img id="product-image" class="product-image" src="/img/default-product.jpg" alt="Imagen del producto">
+                    </div>
+                    
+                    <!-- Información del producto -->
+                    <div class="product-info">
+                        <p id="product-description" class="product-description"></p>
+                        
+                        <div class="product-meta">
+                            <span class="meta-label">Categoría:</span>
+                            <span id="product-category"></span>
+                            
+                            <span class="meta-label">Autor:</span>
+                            <span id="product-author"></span>
+                            
+                            <span class="meta-label">Fecha de publicación:</span>
+                            <span id="product-date"></span>
+                            
+                            <span class="meta-label">Disponibilidad:</span>
+                            <span id="product-stock"></span>
+                        </div>
+                        
+                        <div id="product-price" class="product-price"></div>
+                        
+                        <button id="buy-button" class="buy-button">Comprar ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Underworld - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Script para cargar y mostrar los detalles del producto
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener el ID del producto de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            if (!productId) {
+                mostrarError('No se especificó un ID de producto');
+                return;
+            }
+            
+            // Cargar los detalles del producto
+            cargarDetalleProducto(productId);
+            
+            // Configurar actualización automática
+            // configurarActualizacionAutomatica(productId);
+        });
+        
+        // Variable para almacenar el intervalo de actualización
+        let refreshInterval;
+        
+        // Función para cargar los detalles del producto
+        function cargarDetalleProducto(productId) {
+            fetch(`/api/detalle/${productId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al obtener los detalles del producto');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Datos del producto:', data);
+                    mostrarDetalleProducto(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    mostrarError('No se pudo cargar la información del producto');
+                });
+        }
+        
+        // Función para mostrar los detalles del producto
+        function mostrarDetalleProducto(script) {
+            // Actualizar el título de la página
+            document.title = `${script.titulo} - Detalles`;
+            
+            // Actualizar los elementos de la página
+            document.getElementById('product-title').textContent = script.titulo;
+            document.getElementById('product-description').textContent = script.descripcion || 'No hay descripción disponible.';
+            document.getElementById('product-price').textContent = `${script.precio} USD`;
+            document.getElementById('product-category').textContent = script.categoria ? script.categoria.nombre : 'Sin categoría';
+            document.getElementById('product-author').textContent = script.autor ? script.autor.username : 'Autor desconocido';
+            
+            // Formatear y mostrar la fecha
+            const fecha = new Date(script.fechaPublicacion);
+            document.getElementById('product-date').textContent = fecha.toLocaleDateString();
+            
+            // Mostrar disponibilidad con estilo según stock
+            const stockElement = document.getElementById('product-stock');
+            if (script.stock > 10) {
+                stockElement.textContent = `${script.stock} disponibles`;
+                stockElement.className = 'stock-available';
+            } else if (script.stock > 0) {
+                stockElement.textContent = `¡Solo quedan ${script.stock}!`;
+                stockElement.className = 'stock-low';
+            } else {
+                stockElement.textContent = 'Agotado';
+                stockElement.className = 'stock-unavailable';
+            }
+            
+            // Configurar imagen
+            if (script.imagenUrl) {
+                document.getElementById('product-image').src = script.imagenUrl;
+                document.getElementById('product-image').alt = script.titulo;
+            }
+            
+            // Configurar botón de compra
+            const buyButton = document.getElementById('buy-button');
+            if (script.stock > 0) {
+                buyButton.disabled = false;
+                buyButton.textContent = 'Comprar ahora';
+                buyButton.onclick = function() {
+                    window.location.href = `/checkout.html?id=${script._id}&price=${script.precio}`;
+                };
+            } else {
+                buyButton.disabled = true;
+                buyButton.textContent = 'Producto agotado';
+            }
+            
+            // Ocultar loader y mostrar contenido
+            document.getElementById('loading-container').style.display = 'none';
+            document.getElementById('product-container').style.display = 'block';
+        }
+        
+        // Función para mostrar errores
+        function mostrarError(mensaje) {
+            document.getElementById('loading-container').style.display = 'none';
+            document.getElementById('error-message').textContent = mensaje;
+            document.getElementById('error-container').style.display = 'block';
+        }
+        
+        // // Función para configurar la actualización automática
+        // function configurarActualizacionAutomatica(productId) {
+        //     // Actualizar cada 30 segundos
+        //     refreshInterval = setInterval(() => {
+        //         fetch(`/api/detalle/${productId}?t=${Date.now()}`)
+        //             .then(response => response.json())
+        //             .then(data => {
+        //                 actualizarCamposProducto(data);
+        //             })
+        //             .catch(error => {
+        //                 console.warn('Error al actualizar:', error);
+        //                 // No mostramos error al usuario para no interrumpir
+        //             });
+        //     }, 30000); // 30 segundos
+            
+        //     // Limpiar intervalo cuando se cierra la ventana
+        //     window.addEventListener('beforeunload', function() {
+        //         clearInterval(refreshInterval);
+        //     });
+        // }
+        
+        // Función para actualizar campos específicos con animación
+        function actualizarCamposProducto(script) {
+            // Actualizar precio si cambió
+            const precioElement = document.getElementById('product-price');
+            const precioActual = precioElement.textContent;
+            const precioNuevo = `${script.precio} USD`;
+            
+            if (precioActual !== precioNuevo) {
+                precioElement.textContent = precioNuevo;
+                aplicarAnimacion(precioElement);
+            }
+            
+            // Actualizar stock si cambió
+            const stockElement = document.getElementById('product-stock');
+            let nuevoTextoStock;
+            let nuevaClaseStock;
+            
+            if (script.stock > 10) {
+                nuevoTextoStock = `${script.stock} disponibles`;
+                nuevaClaseStock = 'stock-available';
+            } else if (script.stock > 0) {
+                nuevoTextoStock = `¡Solo quedan ${script.stock}!`;
+                nuevaClaseStock = 'stock-low';
+            } else {
+                nuevoTextoStock = 'Agotado';
+                nuevaClaseStock = 'stock-unavailable';
+            }
+            
+            if (stockElement.textContent !== nuevoTextoStock) {
+                stockElement.textContent = nuevoTextoStock;
+                stockElement.className = nuevaClaseStock;
+                aplicarAnimacion(stockElement);
+            }
+            
+            // Actualizar botón de compra según disponibilidad
+            const buyButton = document.getElementById('buy-button');
+            if (script.stock > 0) {
+                buyButton.disabled = false;
+                buyButton.textContent = 'Comprar ahora';
+                buyButton.onclick = function() {
+                    window.location.href = `/checkout.html?id=${script._id}&price=${script.precio}`;
+                };
+            } else {
+                buyButton.disabled = true;
+                buyButton.textContent = 'Producto agotado';
+            }
+        }
+        
+        // Función para aplicar animación de actualización
+        function aplicarAnimacion(elemento) {
+            elemento.classList.add('updated-field');
+            setTimeout(() => {
+                elemento.classList.remove('updated-field');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
